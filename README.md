@@ -1,6 +1,9 @@
 # Hyperledger Fabric network in K8s with External Chaincodes as pods
 
-Refer the tutorial and instructions in this article: https://medium.com/@pau.aragones/how-to-implement-hyperledger-fabric-external-chaincodes-within-a-kubernetes-cluster-fd01d7544523
+Refer the tutorial and instructions in this article: 
+
+	https://liujinye.gitbook.io/openshift-docs/hyperledger-fabric/hyperledger-fabric-on-openshift3.11
+	https://medium.com/swlh/how-to-implement-hyperledger-fabric-external-chaincodes-within-a-kubernetes-cluster-fd01d7544523
 
 ## Install the binaries
 
