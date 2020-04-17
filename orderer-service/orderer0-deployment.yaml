@@ -19,6 +19,14 @@ spec:
         app: orderer0
     spec:
       affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: fabric 
+                operator: In
+                values:
+                - 'true'
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
             - weight: 1
@@ -80,11 +88,14 @@ spec:
             - mountPath: /var/hyperledger/orderer/tls
               name: orderer-claim2
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric
+          securityContext:
+            privileged: true
+      serviceAccountName: fabric
       restartPolicy: Always
       volumes:
         - name: orderer-persistentdata
           hostPath:
-            path: /home/pau/storage/orderer
+            path: /data/fabric/storage/orderer
             type: DirectoryOrCreate
         - name: orderer-claim0
           hostPath:

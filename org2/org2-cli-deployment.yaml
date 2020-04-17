@@ -18,6 +18,15 @@ spec:
       labels:
         app: cli-org2
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: fabric
+                operator: In
+                values:
+                - 'true'
       containers:
         - env:
             - name: FABRIC_LOGGING_SPEC
@@ -55,6 +64,9 @@ spec:
             - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
               name: cli-claim3
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+          securityContext:
+            privileged: true
+      serviceAccountName: fabric
       restartPolicy: Always
       volumes:
         - name: cli-claim0

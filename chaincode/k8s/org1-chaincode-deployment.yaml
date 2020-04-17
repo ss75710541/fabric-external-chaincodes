@@ -19,12 +19,12 @@ spec:
         app: chaincode-marbles-org1
     spec:
       containers:
-        - image: chaincode/marbles:1.0
+        - image: ss75710541/chaincode-marbles:1.0
           name: chaincode-marbles-org1
           imagePullPolicy: IfNotPresent
           env:
             - name: CHAINCODE_CCID
-              value: "marbles:d8140fbc1a0903bd88611a96c5b0077a2fdeef00a95c05bfe52e207f5f9ab79d"
+              value: "marbles:3ec68d1efc8a0e69beec80e8cba0087cb183edf25372202c5bf099b1e4c69ded"
             - name: CHAINCODE_ADDRESS
               value: "0.0.0.0:7052"
           ports:

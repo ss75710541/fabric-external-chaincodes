@@ -18,6 +18,15 @@ spec:
       labels:
         app: peer0-org1
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: fabric
+                operator: In
+                values:
+                - 'true'
       containers:
         - args:
             - peer
@@ -78,6 +87,9 @@ spec:
             - mountPath: /builders/external
               name: external-builder
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+          securityContext:
+            privileged: true
+      serviceAccountName: fabric
       restartPolicy: Always
       volumes:
         - name: peer0-org1-claim0
